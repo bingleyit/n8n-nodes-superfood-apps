@@ -120,7 +120,7 @@ The tests drive the real node code against an in-memory copy of the Superfood AP
 
 ### Releasing
 
-Publishing runs from GitHub Actions with npm provenance (`.github/workflows/publish.yml`), triggered by a version tag. Run `npm run release` to bump the version, update the changelog, tag and push.
+Publishing runs from GitHub Actions with npm provenance (`.github/workflows/publish.yml`). Either run `npm run release` (bumps the version, updates the changelog, tags and pushes; the tag publishes through npm trusted publishing), or bump `version` and `CHANGELOG.md` by hand and use **Run workflow** on the Publish action. A manual run stages the release by default: approve it on npmjs.com (package > Staged Packages) with 2FA.
 
 ## Resources
 
