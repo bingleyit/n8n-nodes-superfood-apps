@@ -62,6 +62,11 @@ on:
       - '*.*.*'
   # Or run it by hand from the Actions tab: publishes the version in package.json.
   workflow_dispatch:
+    inputs:
+      staged:
+        description: 'Stage the release for approval on npmjs.com (2FA) instead of publishing straight away'
+        type: boolean
+        default: true
 
 jobs:
   publish:
@@ -89,7 +94,22 @@ jobs:
       - name: Run tests
         run: 'npm test'
 
+      - name: Stage for approval
+        # A staged release waits on npmjs.com (Staged Packages tab) until a
+        # maintainer approves it with 2FA. Works for a package's first publish.
+        if: ${{ inputs.staged }}
+        run: |
+          npm install -g npm@latest
+          [ -n "$NPM_TOKEN" ] && npm config set //registry.npmjs.org/:_authToken "$NPM_TOKEN"
+          npm run lint
+          npm run build
+          npm stage publish --provenance --access public
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          RELEASE_MODE: 'true'
+
       - name: Release
+        if: ${{ !inputs.staged }}
         # Publishes to npm with a provenance attestation (requires id-token: write above).
         # Lint and build run automatically as part of the release process.
         #
