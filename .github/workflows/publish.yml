@@ -60,6 +60,8 @@ on:
       # Matches 0.1.0, 1.2.3, 2.0.0-rc.1, etc.
       # See "TAG CONVENTION" above if you prefer tags with a "v" prefix.
       - '*.*.*'
+  # Or run it by hand from the Actions tab: publishes the version in package.json.
+  workflow_dispatch:
 
 jobs:
   publish:
