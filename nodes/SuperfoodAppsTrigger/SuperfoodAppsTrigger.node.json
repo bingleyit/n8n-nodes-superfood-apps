@@ -1,0 +1,18 @@
+{
+	"node": "n8n-nodes-superfood-apps.superfoodAppsTrigger",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": ["Productivity", "Data & Storage"],
+	"resources": {
+		"credentialDocumentation": [
+			{
+				"url": "https://github.com/bingleyit/n8n-nodes-superfood-apps#credentials"
+			}
+		],
+		"primaryDocumentation": [
+			{
+				"url": "https://github.com/bingleyit/n8n-nodes-superfood-apps#readme"
+			}
+		]
+	}
+}

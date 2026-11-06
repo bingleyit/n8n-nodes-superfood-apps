@@ -1,0 +1,2018 @@
+{
+ "object": "list",
+ "data": [
+  {
+   "key": "products",
+   "label": "Products",
+   "group": "Products and production",
+   "description": "The one product book every module shares: codes, sizes, prices, pallet details and custom fields.",
+   "changed_field": "updated_at",
+   "fields": [
+    {
+     "name": "id",
+     "type": "uuid"
+    },
+    {
+     "name": "product_name",
+     "type": "text"
+    },
+    {
+     "name": "display_name",
+     "type": "text"
+    },
+    {
+     "name": "sku",
+     "type": "text"
+    },
+    {
+     "name": "barcode",
+     "type": "text"
+    },
+    {
+     "name": "product_description",
+     "type": "text"
+    },
+    {
+     "name": "unit_size",
+     "type": "text"
+    },
+    {
+     "name": "unit_size_g",
+     "type": "number"
+    },
+    {
+     "name": "unit_of_measure",
+     "type": "text"
+    },
+    {
+     "name": "pack_size_text",
+     "type": "text"
+    },
+    {
+     "name": "qty_uom",
+     "type": "number"
+    },
+    {
+     "name": "weight_system",
+     "type": "text"
+    },
+    {
+     "name": "nominal_weight_g",
+     "type": "number"
+    },
+    {
+     "name": "tare_weight_g",
+     "type": "number"
+    },
+    {
+     "name": "shelf_life_days",
+     "type": "number"
+    },
+    {
+     "name": "tun",
+     "type": "text",
+     "note": "Trade unit number (carton barcode)"
+    },
+    {
+     "name": "gst",
+     "type": "text"
+    },
+    {
+     "name": "unit_cost",
+     "type": "number"
+    },
+    {
+     "name": "price_tier_1",
+     "type": "number"
+    },
+    {
+     "name": "price_tier_2",
+     "type": "number"
+    },
+    {
+     "name": "price_tier_3",
+     "type": "number"
+    },
+    {
+     "name": "price_tier_4",
+     "type": "number"
+    },
+    {
+     "name": "price_tier_5",
+     "type": "number"
+    },
+    {
+     "name": "rrp_tier_1",
+     "type": "number"
+    },
+    {
+     "name": "rrp_tier_2",
+     "type": "number"
+    },
+    {
+     "name": "rrp_tier_3",
+     "type": "number"
+    },
+    {
+     "name": "woolworths_product_code",
+     "type": "text"
+    },
+    {
+     "name": "coles_product_code",
+     "type": "text"
+    },
+    {
+     "name": "otr_product_code",
+     "type": "text"
+    },
+    {
+     "name": "cartons_per_layer",
+     "type": "number"
+    },
+    {
+     "name": "max_layers_per_pallet",
+     "type": "number"
+    },
+    {
+     "name": "max_cartons_per_pallet",
+     "type": "number"
+    },
+    {
+     "name": "carton_dimensions",
+     "type": "text"
+    },
+    {
+     "name": "category_id",
+     "type": "uuid"
+    },
+    {
+     "name": "site_id",
+     "type": "uuid"
+    },
+    {
+     "name": "product_photo",
+     "type": "text",
+     "note": "Image URL"
+    },
+    {
+     "name": "custom",
+     "type": "json",
+     "note": "Your custom fields, keyed by field id"
+    },
+    {
+     "name": "created_at",
+     "type": "datetime"
+    },
+    {
+     "name": "updated_at",
+     "type": "datetime"
+    }
+   ],
+   "writes": null
+  },
+  {
+   "key": "ingredients",
+   "label": "Ingredients",
+   "group": "Products and production",
+   "description": "Ingredients used in recipes, with allergens, nutrition per 100g, supplier and cost.",
+   "changed_field": "updated_at",
+   "fields": [
+    {
+     "name": "id",
+     "type": "uuid"
+    },
+    {
+     "name": "name",
+     "type": "text"
+    },
+    {
+     "name": "item_code",
+     "type": "text"
+    },
+    {
+     "name": "descriptor",
+     "type": "text"
+    },
+    {
+     "name": "listing",
+     "type": "text",
+     "note": "How it reads on the ingredient list"
+    },
+    {
+     "name": "ingredient_type",
+     "type": "text"
+    },
+    {
+     "name": "allergens",
+     "type": "json"
+    },
+    {
+     "name": "may_contain",
+     "type": "text"
+    },
+    {
+     "name": "percent_australian",
+     "type": "number"
+    },
+    {
+     "name": "nutrition",
+     "type": "json"
+    },
+    {
+     "name": "supplier_name",
+     "type": "text"
+    },
+    {
+     "name": "cost_per_kg",
+     "type": "number"
+    },
+    {
+     "name": "uom",
+     "type": "text"
+    },
+    {
+     "name": "size_text",
+     "type": "text"
+    },
+    {
+     "name": "sub_recipe_id",
+     "type": "uuid"
+    },
+    {
+     "name": "is_archived",
+     "type": "boolean"
+    },
+    {
+     "name": "created_at",
+     "type": "datetime"
+    },
+    {
+     "name": "updated_at",
+     "type": "datetime"
+    }
+   ],
+   "writes": null
+  },
+  {
+   "key": "recipes",
+   "label": "Recipes",
+   "group": "Products and production",
+   "description": "Recipes and sub-recipes with batch size, yield and the computed label values.",
+   "changed_field": "updated_at",
+   "fields": [
+    {
+     "name": "id",
+     "type": "uuid"
+    },
+    {
+     "name": "name",
+     "type": "text"
+    },
+    {
+     "name": "notes",
+     "type": "text"
+    },
+    {
+     "name": "instructions",
+     "type": "text"
+    },
+    {
+     "name": "batch_g",
+     "type": "number"
+    },
+    {
+     "name": "yield_pct",
+     "type": "number"
+    },
+    {
+     "name": "is_sub_recipe",
+     "type": "boolean"
+    },
+    {
+     "name": "hsr_category",
+     "type": "text"
+    },
+    {
+     "name": "computed",
+     "type": "json",
+     "note": "Nutrition, allergens and percentages, as last calculated"
+    },
+    {
+     "name": "computed_at",
+     "type": "datetime"
+    },
+    {
+     "name": "is_archived",
+     "type": "boolean"
+    },
+    {
+     "name": "created_at",
+     "type": "datetime"
+    },
+    {
+     "name": "updated_at",
+     "type": "datetime"
+    }
+   ],
+   "writes": null
+  },
+  {
+   "key": "production_runs",
+   "label": "Production runs",
+   "group": "Products and production",
+   "description": "Planned and completed production runs by product and date.",
+   "changed_field": "updated_at",
+   "fields": [
+    {
+     "name": "id",
+     "type": "uuid"
+    },
+    {
+     "name": "run_date",
+     "type": "date"
+    },
+    {
+     "name": "product_id",
+     "type": "uuid"
+    },
+    {
+     "name": "product_text",
+     "type": "text"
+    },
+    {
+     "name": "qty",
+     "type": "number"
+    },
+    {
+     "name": "status",
+     "type": "text"
+    },
+    {
+     "name": "asset_ids",
+     "type": "list"
+    },
+    {
+     "name": "notes",
+     "type": "text"
+    },
+    {
+     "name": "source",
+     "type": "text"
+    },
+    {
+     "name": "parent_run_id",
+     "type": "uuid"
+    },
+    {
+     "name": "created_by",
+     "type": "text"
+    },
+    {
+     "name": "created_at",
+     "type": "datetime"
+    },
+    {
+     "name": "updated_at",
+     "type": "datetime"
+    }
+   ],
+   "writes": {
+    "create": true,
+    "update": true,
+    "writable_fields": [
+     "run_date",
+     "product_id",
+     "product_text",
+     "qty",
+     "status",
+     "asset_ids",
+     "notes"
+    ],
+    "required_on_create": []
+   }
+  },
+  {
+   "key": "customers",
+   "label": "Stores and customers",
+   "group": "Sales",
+   "description": "The one store and customer book: codes, contacts, address, retailer and location.",
+   "changed_field": "updated_at",
+   "fields": [
+    {
+     "name": "id",
+     "type": "uuid"
+    },
+    {
+     "name": "name",
+     "type": "text"
+    },
+    {
+     "name": "customer_code",
+     "type": "text"
+    },
+    {
+     "name": "customer_type",
+     "type": "text"
+    },
+    {
+     "name": "retailer",
+     "type": "text"
+    },
+    {
+     "name": "account_id",
+     "type": "uuid"
+    },
+    {
+     "name": "master_store_id",
+     "type": "uuid"
+    },
+    {
+     "name": "phone",
+     "type": "text"
+    },
+    {
+     "name": "sales_email",
+     "type": "text"
+    },
+    {
+     "name": "accounts_email",
+     "type": "text"
+    },
+    {
+     "name": "address",
+     "type": "text"
+    },
+    {
+     "name": "latitude",
+     "type": "number"
+    },
+    {
+     "name": "longitude",
+     "type": "number"
+    },
+    {
+     "name": "woolworths_store_account_code",
+     "type": "text"
+    },
+    {
+     "name": "coles_store_code",
+     "type": "text"
+    },
+    {
+     "name": "otr_store_code",
+     "type": "text"
+    },
+    {
+     "name": "account_manager_id",
+     "type": "uuid"
+    },
+    {
+     "name": "sales_12m",
+     "type": "number"
+    },
+    {
+     "name": "sales_prev_12m",
+     "type": "number"
+    },
+    {
+     "name": "is_obsolete",
+     "type": "boolean"
+    },
+    {
+     "name": "custom",
+     "type": "json"
+    },
+    {
+     "name": "archived_at",
+     "type": "datetime"
+    },
+    {
+     "name": "created_at",
+     "type": "datetime"
+    },
+    {
+     "name": "updated_at",
+     "type": "datetime"
+    }
+   ],
+   "writes": null
+  },
+  {
+   "key": "promotions",
+   "label": "Promotions",
+   "group": "Sales",
+   "description": "PromoPlan promotions: dates, retailer, status, spend and results.",
+   "changed_field": "updated_at",
+   "fields": [
+    {
+     "name": "id",
+     "type": "uuid"
+    },
+    {
+     "name": "promo_id",
+     "type": "text",
+     "note": "Your promotion number"
+    },
+    {
+     "name": "promo_name",
+     "type": "text"
+    },
+    {
+     "name": "promo_type",
+     "type": "text"
+    },
+    {
+     "name": "status",
+     "type": "text"
+    },
+    {
+     "name": "retailer",
+     "type": "text"
+    },
+    {
+     "name": "account_id",
+     "type": "uuid"
+    },
+    {
+     "name": "customer_id",
+     "type": "uuid"
+    },
+    {
+     "name": "in_store_start",
+     "type": "date"
+    },
+    {
+     "name": "in_store_end",
+     "type": "date"
+    },
+    {
+     "name": "valid_from",
+     "type": "date"
+    },
+    {
+     "name": "valid_to",
+     "type": "date"
+    },
+    {
+     "name": "price_tier",
+     "type": "text"
+    },
+    {
+     "name": "claim_type",
+     "type": "text"
+    },
+    {
+     "name": "promo_spend",
+     "type": "number"
+    },
+    {
+     "name": "actual_spend",
+     "type": "number"
+    },
+    {
+     "name": "expected_sales_units",
+     "type": "number"
+    },
+    {
+     "name": "sales_units_sold",
+     "type": "number"
+    },
+    {
+     "name": "expected_sales_value",
+     "type": "number"
+    },
+    {
+     "name": "actual_sales_value",
+     "type": "number"
+    },
+    {
+     "name": "budget_id",
+     "type": "uuid"
+    },
+    {
+     "name": "series_id",
+     "type": "uuid"
+    },
+    {
+     "name": "series_name",
+     "type": "text"
+    },
+    {
+     "name": "pending_approval",
+     "type": "boolean"
+    },
+    {
+     "name": "comments",
+     "type": "text"
+    },
+    {
+     "name": "created_at",
+     "type": "datetime"
+    },
+    {
+     "name": "updated_at",
+     "type": "datetime"
+    }
+   ],
+   "writes": null
+  },
+  {
+   "key": "sales_lines",
+   "label": "Sales lines",
+   "group": "Sales",
+   "description": "Invoiced sales lines from your imports and accounting syncs (one row per invoice line).",
+   "changed_field": "created_at",
+   "fields": [
+    {
+     "name": "id",
+     "type": "uuid"
+    },
+    {
+     "name": "sale_date",
+     "type": "date"
+    },
+    {
+     "name": "doc_ref",
+     "type": "text",
+     "note": "Invoice or document number"
+    },
+    {
+     "name": "customer_id",
+     "type": "uuid"
+    },
+    {
+     "name": "customer_code",
+     "type": "text"
+    },
+    {
+     "name": "customer_name",
+     "type": "text"
+    },
+    {
+     "name": "product_id",
+     "type": "uuid"
+    },
+    {
+     "name": "product_sku",
+     "type": "text"
+    },
+    {
+     "name": "product_name",
+     "type": "text"
+    },
+    {
+     "name": "qty",
+     "type": "number"
+    },
+    {
+     "name": "unit_price",
+     "type": "number"
+    },
+    {
+     "name": "value",
+     "type": "number"
+    },
+    {
+     "name": "source",
+     "type": "text"
+    },
+    {
+     "name": "import_id",
+     "type": "uuid"
+    },
+    {
+     "name": "attributes",
+     "type": "json"
+    },
+    {
+     "name": "created_at",
+     "type": "datetime"
+    }
+   ],
+   "writes": null
+  },
+  {
+   "key": "orders",
+   "label": "EasyImport orders",
+   "group": "Sales",
+   "description": "Customer orders read by EasyImport, with the extracted lines in order_data.",
+   "changed_field": "updated_at",
+   "fields": [
+    {
+     "name": "id",
+     "type": "uuid"
+    },
+    {
+     "name": "status",
+     "type": "text"
+    },
+    {
+     "name": "source",
+     "type": "text"
+    },
+    {
+     "name": "from_email",
+     "type": "text"
+    },
+    {
+     "name": "subject",
+     "type": "text"
+    },
+    {
+     "name": "received_at",
+     "type": "datetime"
+    },
+    {
+     "name": "order_data",
+     "type": "json",
+     "note": "Header and lines as read from the order"
+    },
+    {
+     "name": "custom_values",
+     "type": "json"
+    },
+    {
+     "name": "approved_at",
+     "type": "datetime"
+    },
+    {
+     "name": "approved_by",
+     "type": "text"
+    },
+    {
+     "name": "merged_at",
+     "type": "datetime"
+    },
+    {
+     "name": "created_at",
+     "type": "datetime"
+    },
+    {
+     "name": "updated_at",
+     "type": "datetime"
+    }
+   ],
+   "writes": null
+  },
+  {
+   "key": "form_submissions",
+   "label": "Form submissions",
+   "group": "Quality and food safety",
+   "description": "Every completed form, with its answers and QA sign-off state.",
+   "changed_field": "submitted_at",
+   "fields": [
+    {
+     "name": "id",
+     "type": "uuid"
+    },
+    {
+     "name": "form_id",
+     "type": "text"
+    },
+    {
+     "name": "submission_name",
+     "type": "text"
+    },
+    {
+     "name": "submission_number",
+     "type": "number"
+    },
+    {
+     "name": "submitted_by",
+     "type": "text"
+    },
+    {
+     "name": "user_email",
+     "type": "text"
+    },
+    {
+     "name": "submitted_at",
+     "type": "datetime"
+    },
+    {
+     "name": "status",
+     "type": "text"
+    },
+    {
+     "name": "form_data",
+     "type": "json",
+     "note": "Answers keyed by field id"
+    },
+    {
+     "name": "notes",
+     "type": "text"
+    },
+    {
+     "name": "qa_status",
+     "type": "text"
+    },
+    {
+     "name": "qa_reviewed_by",
+     "type": "text"
+    },
+    {
+     "name": "qa_reviewed_at",
+     "type": "datetime"
+    },
+    {
+     "name": "qa_approved_by",
+     "type": "text"
+    },
+    {
+     "name": "qa_approved_at",
+     "type": "datetime"
+    },
+    {
+     "name": "qa_notes",
+     "type": "text"
+    },
+    {
+     "name": "site_id",
+     "type": "uuid"
+    }
+   ],
+   "writes": null
+  },
+  {
+   "key": "registers",
+   "label": "Registers",
+   "group": "Quality and food safety",
+   "description": "Your registers (chemicals, scales, thermometers, custom) and their column definitions.",
+   "changed_field": "updated_at",
+   "fields": [
+    {
+     "name": "id",
+     "type": "uuid"
+    },
+    {
+     "name": "name",
+     "type": "text"
+    },
+    {
+     "name": "kind",
+     "type": "text"
+    },
+    {
+     "name": "description",
+     "type": "text"
+    },
+    {
+     "name": "columns",
+     "type": "json",
+     "note": "Column keys, labels and types"
+    },
+    {
+     "name": "created_by",
+     "type": "text"
+    },
+    {
+     "name": "created_at",
+     "type": "datetime"
+    },
+    {
+     "name": "updated_at",
+     "type": "datetime"
+    }
+   ],
+   "writes": null
+  },
+  {
+   "key": "register_entries",
+   "label": "Register entries",
+   "group": "Quality and food safety",
+   "description": "The rows of every register; data is keyed by the register's column keys.",
+   "changed_field": "updated_at",
+   "fields": [
+    {
+     "name": "id",
+     "type": "uuid"
+    },
+    {
+     "name": "register_id",
+     "type": "uuid"
+    },
+    {
+     "name": "data",
+     "type": "json"
+    },
+    {
+     "name": "attachments",
+     "type": "json"
+    },
+    {
+     "name": "is_archived",
+     "type": "boolean"
+    },
+    {
+     "name": "created_by",
+     "type": "text"
+    },
+    {
+     "name": "created_at",
+     "type": "datetime"
+    },
+    {
+     "name": "updated_at",
+     "type": "datetime"
+    }
+   ],
+   "writes": {
+    "create": true,
+    "update": true,
+    "writable_fields": [
+     "register_id",
+     "data",
+     "attachments"
+    ],
+    "required_on_create": [
+     "register_id",
+     "data"
+    ]
+   }
+  },
+  {
+   "key": "complaints",
+   "label": "Customer complaints",
+   "group": "Quality and food safety",
+   "description": "Customer complaints with product, batch, root cause and actions.",
+   "changed_field": "updated_at",
+   "fields": [
+    {
+     "name": "id",
+     "type": "uuid"
+    },
+    {
+     "name": "complaint_number",
+     "type": "number"
+    },
+    {
+     "name": "status",
+     "type": "text"
+    },
+    {
+     "name": "date_of_complaint",
+     "type": "date"
+    },
+    {
+     "name": "source",
+     "type": "text"
+    },
+    {
+     "name": "store_or_customer",
+     "type": "text"
+    },
+    {
+     "name": "customer_name",
+     "type": "text"
+    },
+    {
+     "name": "contact_name",
+     "type": "text"
+    },
+    {
+     "name": "customer_email",
+     "type": "text"
+    },
+    {
+     "name": "customer_phone",
+     "type": "text"
+    },
+    {
+     "name": "product_id",
+     "type": "uuid"
+    },
+    {
+     "name": "product_text",
+     "type": "text"
+    },
+    {
+     "name": "batch_code",
+     "type": "text"
+    },
+    {
+     "name": "best_before",
+     "type": "text"
+    },
+    {
+     "name": "site",
+     "type": "text"
+    },
+    {
+     "name": "problem_type",
+     "type": "text"
+    },
+    {
+     "name": "problem_area",
+     "type": "text"
+    },
+    {
+     "name": "details",
+     "type": "text"
+    },
+    {
+     "name": "root_cause",
+     "type": "text"
+    },
+    {
+     "name": "immediate_action",
+     "type": "text"
+    },
+    {
+     "name": "long_term_action",
+     "type": "text"
+    },
+    {
+     "name": "response_to_customer",
+     "type": "text"
+    },
+    {
+     "name": "corrective_action_required",
+     "type": "boolean"
+    },
+    {
+     "name": "close_out_date",
+     "type": "date"
+    },
+    {
+     "name": "assigned_email",
+     "type": "text"
+    },
+    {
+     "name": "reported_by",
+     "type": "text"
+    },
+    {
+     "name": "ncr_id",
+     "type": "uuid"
+    },
+    {
+     "name": "custom",
+     "type": "json"
+    },
+    {
+     "name": "created_at",
+     "type": "datetime"
+    },
+    {
+     "name": "updated_at",
+     "type": "datetime"
+    }
+   ],
+   "writes": {
+    "create": true,
+    "update": true,
+    "writable_fields": [
+     "status",
+     "date_of_complaint",
+     "source",
+     "store_or_customer",
+     "customer_name",
+     "contact_name",
+     "customer_email",
+     "customer_phone",
+     "product_id",
+     "product_text",
+     "batch_code",
+     "best_before",
+     "site",
+     "problem_type",
+     "problem_area",
+     "details",
+     "root_cause",
+     "immediate_action",
+     "long_term_action",
+     "response_to_customer",
+     "corrective_action_required",
+     "close_out_date",
+     "assigned_email",
+     "reported_by",
+     "custom"
+    ],
+    "required_on_create": []
+   }
+  },
+  {
+   "key": "ncrs",
+   "label": "Non-conformance reports",
+   "group": "Quality and food safety",
+   "description": "NCRs with severity, root cause, corrective action and close-out.",
+   "changed_field": "updated_at",
+   "fields": [
+    {
+     "name": "id",
+     "type": "uuid"
+    },
+    {
+     "name": "ncr_number",
+     "type": "number"
+    },
+    {
+     "name": "title",
+     "type": "text"
+    },
+    {
+     "name": "status",
+     "type": "text"
+    },
+    {
+     "name": "date_of_infringement",
+     "type": "date"
+    },
+    {
+     "name": "issue_type",
+     "type": "text"
+    },
+    {
+     "name": "issue_severity",
+     "type": "text"
+    },
+    {
+     "name": "ncr_type",
+     "type": "text"
+    },
+    {
+     "name": "description",
+     "type": "text"
+    },
+    {
+     "name": "root_cause",
+     "type": "text"
+    },
+    {
+     "name": "corrective_action",
+     "type": "text"
+    },
+    {
+     "name": "site",
+     "type": "text"
+    },
+    {
+     "name": "responsible_email",
+     "type": "text"
+    },
+    {
+     "name": "reported_by",
+     "type": "text"
+    },
+    {
+     "name": "close_out_date",
+     "type": "date"
+    },
+    {
+     "name": "complaint_id",
+     "type": "uuid"
+    },
+    {
+     "name": "custom",
+     "type": "json"
+    },
+    {
+     "name": "created_at",
+     "type": "datetime"
+    },
+    {
+     "name": "updated_at",
+     "type": "datetime"
+    }
+   ],
+   "writes": {
+    "create": true,
+    "update": true,
+    "writable_fields": [
+     "title",
+     "status",
+     "date_of_infringement",
+     "issue_type",
+     "issue_severity",
+     "ncr_type",
+     "description",
+     "root_cause",
+     "corrective_action",
+     "site",
+     "responsible_email",
+     "reported_by",
+     "close_out_date",
+     "complaint_id",
+     "custom"
+    ],
+    "required_on_create": []
+   }
+  },
+  {
+   "key": "incidents",
+   "label": "Incident reports",
+   "group": "Quality and food safety",
+   "description": "Hazards and incidents with location, injuries, damage and corrective action.",
+   "changed_field": "updated_at",
+   "fields": [
+    {
+     "name": "id",
+     "type": "uuid"
+    },
+    {
+     "name": "incident_number",
+     "type": "number"
+    },
+    {
+     "name": "status",
+     "type": "text"
+    },
+    {
+     "name": "incident_at",
+     "type": "datetime"
+    },
+    {
+     "name": "location",
+     "type": "text"
+    },
+    {
+     "name": "exact_location",
+     "type": "text"
+    },
+    {
+     "name": "incident_types",
+     "type": "list"
+    },
+    {
+     "name": "result_of",
+     "type": "list"
+    },
+    {
+     "name": "report",
+     "type": "text"
+    },
+    {
+     "name": "injured_body_parts",
+     "type": "text"
+    },
+    {
+     "name": "medical_treatment",
+     "type": "text"
+    },
+    {
+     "name": "property_damage",
+     "type": "text"
+    },
+    {
+     "name": "corrective_action",
+     "type": "text"
+    },
+    {
+     "name": "responsible_person",
+     "type": "text"
+    },
+    {
+     "name": "completion_date",
+     "type": "date"
+    },
+    {
+     "name": "reported_by_email",
+     "type": "text"
+    },
+    {
+     "name": "created_at",
+     "type": "datetime"
+    },
+    {
+     "name": "updated_at",
+     "type": "datetime"
+    }
+   ],
+   "writes": {
+    "create": true,
+    "update": true,
+    "writable_fields": [
+     "status",
+     "incident_at",
+     "location",
+     "exact_location",
+     "incident_types",
+     "result_of",
+     "report",
+     "injured_body_parts",
+     "medical_treatment",
+     "property_damage",
+     "corrective_action",
+     "responsible_person",
+     "completion_date",
+     "reported_by_email"
+    ],
+    "required_on_create": []
+   }
+  },
+  {
+   "key": "pest_visits",
+   "label": "Pest control visits",
+   "group": "Quality and food safety",
+   "description": "Pest contractor visits with the checks and recommendations.",
+   "changed_field": "updated_at",
+   "fields": [
+    {
+     "name": "id",
+     "type": "uuid"
+    },
+    {
+     "name": "visit_date",
+     "type": "date"
+    },
+    {
+     "name": "visit_type",
+     "type": "text"
+    },
+    {
+     "name": "contractor",
+     "type": "text"
+    },
+    {
+     "name": "technician",
+     "type": "text"
+    },
+    {
+     "name": "summary",
+     "type": "text"
+    },
+    {
+     "name": "recommendations",
+     "type": "text"
+    },
+    {
+     "name": "checks",
+     "type": "json"
+    },
+    {
+     "name": "created_by",
+     "type": "text"
+    },
+    {
+     "name": "created_at",
+     "type": "datetime"
+    },
+    {
+     "name": "updated_at",
+     "type": "datetime"
+    }
+   ],
+   "writes": {
+    "create": true,
+    "update": true,
+    "writable_fields": [
+     "visit_date",
+     "visit_type",
+     "contractor",
+     "technician",
+     "summary",
+     "recommendations",
+     "checks"
+    ],
+    "required_on_create": []
+   }
+  },
+  {
+   "key": "assets",
+   "label": "Assets",
+   "group": "Site and maintenance",
+   "description": "The asset register: machines and equipment, location, serial and risk rating.",
+   "changed_field": "updated_at",
+   "fields": [
+    {
+     "name": "id",
+     "type": "uuid"
+    },
+    {
+     "name": "asset_number",
+     "type": "number"
+    },
+    {
+     "name": "custom_asset_number",
+     "type": "text"
+    },
+    {
+     "name": "name",
+     "type": "text"
+    },
+    {
+     "name": "status",
+     "type": "text"
+    },
+    {
+     "name": "item_type",
+     "type": "text"
+    },
+    {
+     "name": "location",
+     "type": "text"
+    },
+    {
+     "name": "serial_number",
+     "type": "text"
+    },
+    {
+     "name": "year_of_manufacture",
+     "type": "text"
+    },
+    {
+     "name": "key_parts",
+     "type": "text"
+    },
+    {
+     "name": "maintenance_notes",
+     "type": "text"
+    },
+    {
+     "name": "severity",
+     "type": "text"
+    },
+    {
+     "name": "likelihood",
+     "type": "text"
+    },
+    {
+     "name": "risk_score",
+     "type": "text"
+    },
+    {
+     "name": "supplier_ids",
+     "type": "list"
+    },
+    {
+     "name": "archived_at",
+     "type": "datetime"
+    },
+    {
+     "name": "created_at",
+     "type": "datetime"
+    },
+    {
+     "name": "updated_at",
+     "type": "datetime"
+    }
+   ],
+   "writes": {
+    "create": true,
+    "update": true,
+    "writable_fields": [
+     "name",
+     "custom_asset_number",
+     "status",
+     "item_type",
+     "location",
+     "serial_number",
+     "year_of_manufacture",
+     "key_parts",
+     "maintenance_notes",
+     "severity",
+     "likelihood",
+     "risk_score",
+     "supplier_ids"
+    ],
+    "required_on_create": [
+     "name"
+    ]
+   }
+  },
+  {
+   "key": "job_sheets",
+   "label": "Job sheets",
+   "group": "Site and maintenance",
+   "description": "Maintenance job sheets (breakdown and preventative) from raised to completed.",
+   "changed_field": "updated_at",
+   "fields": [
+    {
+     "name": "id",
+     "type": "uuid"
+    },
+    {
+     "name": "job_number",
+     "type": "number"
+    },
+    {
+     "name": "status",
+     "type": "text"
+    },
+    {
+     "name": "sheet_type",
+     "type": "text"
+    },
+    {
+     "name": "details",
+     "type": "text"
+    },
+    {
+     "name": "asset_id",
+     "type": "uuid"
+    },
+    {
+     "name": "supplier_id",
+     "type": "uuid"
+    },
+    {
+     "name": "pm_schedule_id",
+     "type": "uuid"
+    },
+    {
+     "name": "scheduled_date",
+     "type": "date"
+    },
+    {
+     "name": "due_date",
+     "type": "date"
+    },
+    {
+     "name": "completed_date",
+     "type": "date"
+    },
+    {
+     "name": "assigned_email",
+     "type": "text"
+    },
+    {
+     "name": "completed_by",
+     "type": "text"
+    },
+    {
+     "name": "completed_notes",
+     "type": "text"
+    },
+    {
+     "name": "invasive",
+     "type": "boolean"
+    },
+    {
+     "name": "authorised_at",
+     "type": "datetime"
+    },
+    {
+     "name": "authorised_by",
+     "type": "text"
+    },
+    {
+     "name": "approved_at",
+     "type": "datetime"
+    },
+    {
+     "name": "approved_by",
+     "type": "text"
+    },
+    {
+     "name": "archived_at",
+     "type": "datetime"
+    },
+    {
+     "name": "created_at",
+     "type": "datetime"
+    },
+    {
+     "name": "updated_at",
+     "type": "datetime"
+    }
+   ],
+   "writes": {
+    "create": true,
+    "update": true,
+    "writable_fields": [
+     "status",
+     "sheet_type",
+     "details",
+     "asset_id",
+     "supplier_id",
+     "scheduled_date",
+     "due_date",
+     "assigned_email",
+     "completed_date",
+     "completed_by",
+     "completed_notes",
+     "invasive"
+    ],
+    "required_on_create": []
+   }
+  },
+  {
+   "key": "pm_schedules",
+   "label": "Preventative schedules",
+   "group": "Site and maintenance",
+   "description": "Preventative maintenance schedules per asset with frequency and next due date.",
+   "changed_field": "updated_at",
+   "fields": [
+    {
+     "name": "id",
+     "type": "uuid"
+    },
+    {
+     "name": "asset_id",
+     "type": "uuid"
+    },
+    {
+     "name": "frequency",
+     "type": "text"
+    },
+    {
+     "name": "notes",
+     "type": "text"
+    },
+    {
+     "name": "last_maintenance_date",
+     "type": "date"
+    },
+    {
+     "name": "next_due",
+     "type": "date"
+    },
+    {
+     "name": "default_staff_email",
+     "type": "text"
+    },
+    {
+     "name": "default_supplier_id",
+     "type": "uuid"
+    },
+    {
+     "name": "is_active",
+     "type": "boolean"
+    },
+    {
+     "name": "archived_at",
+     "type": "datetime"
+    },
+    {
+     "name": "created_at",
+     "type": "datetime"
+    },
+    {
+     "name": "updated_at",
+     "type": "datetime"
+    }
+   ],
+   "writes": {
+    "create": false,
+    "update": true,
+    "writable_fields": [
+     "frequency",
+     "notes",
+     "last_maintenance_date",
+     "default_supplier_id"
+    ],
+    "required_on_create": []
+   }
+  },
+  {
+   "key": "spare_parts",
+   "label": "Spare parts",
+   "group": "Site and maintenance",
+   "description": "Spare parts with stock on hand and reorder levels.",
+   "changed_field": "updated_at",
+   "fields": [
+    {
+     "name": "id",
+     "type": "uuid"
+    },
+    {
+     "name": "name",
+     "type": "text"
+    },
+    {
+     "name": "part_no",
+     "type": "text"
+    },
+    {
+     "name": "stock_on_hand",
+     "type": "number"
+    },
+    {
+     "name": "min_stock",
+     "type": "number"
+    },
+    {
+     "name": "max_stock",
+     "type": "number"
+    },
+    {
+     "name": "order_qty",
+     "type": "number"
+    },
+    {
+     "name": "lead_time_days",
+     "type": "number"
+    },
+    {
+     "name": "supplier_id",
+     "type": "uuid"
+    },
+    {
+     "name": "notes",
+     "type": "text"
+    },
+    {
+     "name": "archived_at",
+     "type": "datetime"
+    },
+    {
+     "name": "created_at",
+     "type": "datetime"
+    },
+    {
+     "name": "updated_at",
+     "type": "datetime"
+    }
+   ],
+   "writes": {
+    "create": true,
+    "update": true,
+    "writable_fields": [
+     "name",
+     "part_no",
+     "stock_on_hand",
+     "min_stock",
+     "max_stock",
+     "order_qty",
+     "lead_time_days",
+     "supplier_id",
+     "notes"
+    ],
+    "required_on_create": [
+     "name"
+    ]
+   }
+  },
+  {
+   "key": "suppliers",
+   "label": "Suppliers",
+   "group": "Site and maintenance",
+   "description": "The one supplier book shared by maintenance, procurement and specifications.",
+   "changed_field": "updated_at",
+   "fields": [
+    {
+     "name": "id",
+     "type": "uuid"
+    },
+    {
+     "name": "business_name",
+     "type": "text"
+    },
+    {
+     "name": "supplier_type",
+     "type": "text"
+    },
+    {
+     "name": "email",
+     "type": "text"
+    },
+    {
+     "name": "phone",
+     "type": "text"
+    },
+    {
+     "name": "address",
+     "type": "text"
+    },
+    {
+     "name": "notes",
+     "type": "text"
+    },
+    {
+     "name": "staff_email",
+     "type": "text"
+    },
+    {
+     "name": "proc_categories",
+     "type": "list"
+    },
+    {
+     "name": "custom",
+     "type": "json"
+    },
+    {
+     "name": "archived_at",
+     "type": "datetime"
+    },
+    {
+     "name": "created_at",
+     "type": "datetime"
+    },
+    {
+     "name": "updated_at",
+     "type": "datetime"
+    }
+   ],
+   "writes": {
+    "create": true,
+    "update": true,
+    "writable_fields": [
+     "business_name",
+     "supplier_type",
+     "email",
+     "phone",
+     "address",
+     "notes",
+     "staff_email",
+     "custom"
+    ],
+    "required_on_create": [
+     "business_name"
+    ]
+   }
+  },
+  {
+   "key": "visitors",
+   "label": "Visitor entries",
+   "group": "Site and maintenance",
+   "description": "Visitor sign-ins and sign-outs from your check-in points.",
+   "changed_field": "signed_in_at",
+   "fields": [
+    {
+     "name": "id",
+     "type": "uuid"
+    },
+    {
+     "name": "register_id",
+     "type": "uuid",
+     "note": "The check-in point"
+    },
+    {
+     "name": "visitor_name",
+     "type": "text"
+    },
+    {
+     "name": "visitor_company",
+     "type": "text"
+    },
+    {
+     "name": "visitor_phone",
+     "type": "text"
+    },
+    {
+     "name": "host_name",
+     "type": "text"
+    },
+    {
+     "name": "host_email",
+     "type": "text"
+    },
+    {
+     "name": "signed_in_at",
+     "type": "datetime"
+    },
+    {
+     "name": "signed_out_at",
+     "type": "datetime"
+    },
+    {
+     "name": "sign_out_method",
+     "type": "text"
+    },
+    {
+     "name": "data",
+     "type": "json",
+     "note": "Answers to the check-in questions"
+    },
+    {
+     "name": "created_at",
+     "type": "datetime"
+    }
+   ],
+   "writes": null
+  },
+  {
+   "key": "staff",
+   "label": "Staff",
+   "group": "People",
+   "description": "The staff register: names, contact details, role, staff ID and member type.",
+   "changed_field": "updated_at",
+   "fields": [
+    {
+     "name": "id",
+     "type": "uuid"
+    },
+    {
+     "name": "staff_id",
+     "type": "text"
+    },
+    {
+     "name": "name",
+     "type": "text"
+    },
+    {
+     "name": "first_name",
+     "type": "text"
+    },
+    {
+     "name": "last_name",
+     "type": "text"
+    },
+    {
+     "name": "email",
+     "type": "text"
+    },
+    {
+     "name": "phone",
+     "type": "text"
+    },
+    {
+     "name": "title_department",
+     "type": "text"
+    },
+    {
+     "name": "role",
+     "type": "text"
+    },
+    {
+     "name": "member_type",
+     "type": "text"
+    },
+    {
+     "name": "status",
+     "type": "text"
+    },
+    {
+     "name": "is_active",
+     "type": "boolean"
+    },
+    {
+     "name": "created_at",
+     "type": "datetime"
+    },
+    {
+     "name": "updated_at",
+     "type": "datetime"
+    }
+   ],
+   "writes": null
+  },
+  {
+   "key": "training_records",
+   "label": "Training records",
+   "group": "People",
+   "description": "Completed training per person with expiry dates.",
+   "changed_field": "updated_at",
+   "fields": [
+    {
+     "name": "id",
+     "type": "uuid"
+    },
+    {
+     "name": "user_email",
+     "type": "text"
+    },
+    {
+     "name": "staff_name",
+     "type": "text"
+    },
+    {
+     "name": "training_name",
+     "type": "text"
+    },
+    {
+     "name": "provider",
+     "type": "text"
+    },
+    {
+     "name": "completed_date",
+     "type": "date"
+    },
+    {
+     "name": "expiry_date",
+     "type": "date"
+    },
+    {
+     "name": "notes",
+     "type": "text"
+    },
+    {
+     "name": "source",
+     "type": "text"
+    },
+    {
+     "name": "memo_id",
+     "type": "uuid"
+    },
+    {
+     "name": "submission_id",
+     "type": "uuid"
+    },
+    {
+     "name": "created_at",
+     "type": "datetime"
+    },
+    {
+     "name": "updated_at",
+     "type": "datetime"
+    }
+   ],
+   "writes": {
+    "create": true,
+    "update": true,
+    "writable_fields": [
+     "user_email",
+     "staff_name",
+     "training_name",
+     "provider",
+     "completed_date",
+     "expiry_date",
+     "notes"
+    ],
+    "required_on_create": [
+     "training_name"
+    ]
+   }
+  }
+ ]
+}

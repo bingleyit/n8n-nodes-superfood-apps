@@ -1,0 +1,59 @@
+{
+  "name": "n8n-nodes-superfood-apps",
+  "version": "0.1.0",
+  "description": "n8n nodes for Superfood Apps: read and write records, submit forms, send custom app data, and trigger workflows on new or changed records.",
+  "license": "MIT",
+  "homepage": "https://github.com/bingleyit/n8n-nodes-superfood-apps#readme",
+  "keywords": [
+    "n8n-community-node-package",
+    "n8n",
+    "superfood",
+    "superfood-apps",
+    "food-safety"
+  ],
+  "author": {
+    "name": "Superfood Apps",
+    "email": "simon@bingley.com.au",
+    "url": "https://superfoodapps.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bingleyit/n8n-nodes-superfood-apps.git"
+  },
+  "scripts": {
+    "build": "n8n-node build",
+    "build:watch": "tsc --watch",
+    "dev": "n8n-node dev",
+    "lint": "n8n-node lint",
+    "lint:fix": "n8n-node lint --fix",
+    "release": "n8n-node release",
+    "prepublishOnly": "n8n-node prerelease",
+    "test": "npm run build && node --test test/*.test.js"
+  },
+  "files": [
+    "dist",
+    "!dist/tsconfig.tsbuildinfo",
+    "!dist/**/*.map"
+  ],
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "strict": true,
+    "credentials": [
+      "dist/credentials/SuperfoodAppsApi.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/SuperfoodApps/SuperfoodApps.node.js",
+      "dist/nodes/SuperfoodAppsTrigger/SuperfoodAppsTrigger.node.js"
+    ]
+  },
+  "devDependencies": {
+    "@n8n/node-cli": "^0.55.5",
+    "eslint": "9.32.0",
+    "prettier": "3.6.2",
+    "release-it": "^21.1.0",
+    "typescript": "5.9.2"
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  }
+}

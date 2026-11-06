@@ -1,0 +1,142 @@
+{
+  "name": "New Superfood complaint creates an NCR",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## How to use\nChecks for new complaints every 5 minutes and raises an NCR linked to each. Needs a Read and write key. Check the NCR status values your company uses before activating.",
+        "height": 200,
+        "width": 420
+      },
+      "id": "87dfea28-7e8e-460b-9bc5-4bae398b65bf",
+      "name": "How to use",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        -260
+      ]
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyX",
+              "value": 5,
+              "unit": "minutes"
+            }
+          ]
+        },
+        "event": "newRecord",
+        "table": "complaints",
+        "filters": {},
+        "options": {}
+      },
+      "id": "2a0a734d-81d1-42a4-a1a8-6f2c663ae4ff",
+      "name": "New complaint",
+      "type": "n8n-nodes-superfood-apps.superfoodAppsTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "credentials": {
+        "superfoodAppsApi": {
+          "id": "",
+          "name": "Superfood Apps API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "record",
+        "operation": "create",
+        "table": "ncrs",
+        "fields": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "title": "={{ 'Complaint: ' + ($json.problem_type || 'customer complaint') + ' (' + ($json.customer_name || 'unknown customer') + ')' }}",
+            "description": "={{ $json.details }}",
+            "complaint_id": "={{ $json.id }}",
+            "status": "Open"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "title",
+              "displayName": "Title",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "description",
+              "displayName": "Description",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "complaint_id",
+              "displayName": "Complaint id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            }
+          ]
+        },
+        "writeOptions": {}
+      },
+      "id": "f60a0986-13d8-4c32-af3c-79726d26afe8",
+      "name": "Create NCR",
+      "type": "n8n-nodes-superfood-apps.superfoodApps",
+      "typeVersion": 1,
+      "position": [
+        220,
+        0
+      ],
+      "credentials": {
+        "superfoodAppsApi": {
+          "id": "",
+          "name": "Superfood Apps API"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "New complaint": {
+      "main": [
+        [
+          {
+            "node": "Create NCR",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": false
+  },
+  "pinData": {},
+  "tags": []
+}

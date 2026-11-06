@@ -1,0 +1,126 @@
+{
+  "name": "Process Street checklist to a Superfood custom app",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## How to use\nPoint a Process Street 'checklist completed' webhook at the Webhook node's URL. Adjust the field expressions to your checklist, and set Endpoint to the one listed under Custom app endpoints in Company settings > API. external_id makes a re-sent checklist update the same record.",
+        "height": 200,
+        "width": 420
+      },
+      "id": "14805f87-567c-4a64-b50a-45adcf152abf",
+      "name": "How to use",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        -260
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "process-street-milk-test",
+        "options": {}
+      },
+      "id": "f6364d46-f870-49bf-b47b-a45ab1e5816e",
+      "name": "Process Street webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "d994b3ce-5eaf-436a-85ef-b79240479ef4"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c627f0fa-5d1a-4baf-ac7d-7b0681e4bcb2",
+              "name": "external_id",
+              "value": "={{ $json.body.data.id }}",
+              "type": "string"
+            },
+            {
+              "id": "ef98b31b-e813-4c45-8dc8-c23644a75834",
+              "name": "tested_at",
+              "value": "={{ $json.body.data.completedDate }}",
+              "type": "string"
+            },
+            {
+              "id": "4faa7482-c9cf-4d86-8cdb-ab9a6bf60645",
+              "name": "supplier",
+              "value": "={{ $json.body.data.formFields?.find(f => f.label === 'Supplier')?.value }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e97923ae-535e-4472-b91a-4306acfdb3cb",
+      "name": "Pick checklist fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        220,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "customApp",
+        "operation": "send",
+        "endpoint": "your-app/your-records",
+        "dataMode": "items",
+        "customOptions": {}
+      },
+      "id": "b1a5ec18-894d-41d0-bb3e-2a32e2a5d35f",
+      "name": "Send to Superfood",
+      "type": "n8n-nodes-superfood-apps.superfoodApps",
+      "typeVersion": 1,
+      "position": [
+        440,
+        0
+      ],
+      "credentials": {
+        "superfoodAppsApi": {
+          "id": "",
+          "name": "Superfood Apps API"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Process Street webhook": {
+      "main": [
+        [
+          {
+            "node": "Pick checklist fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pick checklist fields": {
+      "main": [
+        [
+          {
+            "node": "Send to Superfood",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": false
+  },
+  "pinData": {},
+  "tags": []
+}

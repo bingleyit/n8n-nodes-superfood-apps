@@ -1,0 +1,85 @@
+{
+  "name": "Process Street checklist to a Superfood form submission",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## How to use\nPick the form in the Superfood node, then map each answer from the checklist's fields. The submission lands in the QA queue.",
+        "height": 200,
+        "width": 420
+      },
+      "id": "48069d82-d8f7-4432-8f59-b5df2addbdc5",
+      "name": "How to use",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        -260
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "process-street-form",
+        "options": {}
+      },
+      "id": "47e1f28d-f3c9-4804-a48c-07824567ae5f",
+      "name": "Process Street webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "7b000c64-af28-4f0a-95ff-bbb8d6fc28af"
+    },
+    {
+      "parameters": {
+        "resource": "form",
+        "operation": "submit",
+        "formId": "",
+        "submittedBy": "={{ $json.body.data.completedBy?.username ?? 'Process Street' }}",
+        "answers": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": []
+        }
+      },
+      "id": "f9d45203-780c-48de-8957-2239a4d54205",
+      "name": "Submit Superfood form",
+      "type": "n8n-nodes-superfood-apps.superfoodApps",
+      "typeVersion": 1,
+      "position": [
+        220,
+        0
+      ],
+      "credentials": {
+        "superfoodAppsApi": {
+          "id": "",
+          "name": "Superfood Apps API"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Process Street webhook": {
+      "main": [
+        [
+          {
+            "node": "Submit Superfood form",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": false
+  },
+  "pinData": {},
+  "tags": []
+}
